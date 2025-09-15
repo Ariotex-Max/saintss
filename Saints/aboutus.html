@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saints - About Us</title>
+  <style>
+    :root {
+      --bg-main: #16171a;
+      --bg-glass: rgba(25, 27, 30, 0.89);
+      --text-main: #f3f5fa;
+      --text-accent: #2072ff;
+      --accent: #2072ff;
+      --card-bg: rgba(28, 31, 38, 0.97);
+      --border: #232834;
+      --shadow: 0 4px 32px #101216c0;
+      --radius: 22px;
+      --radius-img: 21px;
+      --transition: .18s cubic-bezier(.77,.2,.05,1.01);
+    }
+
+    body {
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url("Pictures/saintslogo.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 8vw;
+      background: var(--bg-glass);
+      box-shadow: 0 2px 24px #12214422;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1.5px solid var(--border);
+      backdrop-filter: blur(8px);
+      flex-wrap: wrap; /* makes nav items wrap if needed */
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      color: var(--text-accent);
+      text-shadow: 0 2px 18px #2072ff40;
+      text-transform: uppercase;
+      filter: brightness(1.18);
+      transition: color var(--transition);
+      flex: 1;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e4e9f7;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding-bottom: 2.5px;
+      border-bottom: 2.5px solid transparent;
+      transition: color var(--transition), border var(--transition);
+    }
+
+    nav a.active, nav a:hover {
+      color: var(--text-accent);
+      border-bottom: 2.5px solid var(--accent);
+    }
+
+    /* ABOUT SECTION */
+    .about-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap; /* allow stacking on smaller screens */
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      color: #c7d7ed;
+      line-height: 1.7;
+      flex: 1 1 400px;
+      letter-spacing: 0.01em;
+      font-weight: 500;
+    }
+
+    .about-text h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      letter-spacing: .02em;
+      background: linear-gradient(90deg, #2072ff 5%, #0d8db6 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px #2072ff12);
+    }
+
+    .about-img {
+      width: 320px;
+      max-width: 100%;
+      border-radius: var(--radius-img);
+      box-shadow: 0 6px 30px #2072ff33;
+      flex: 1 1 260px;
+      object-fit: cover;
+      border: 2.5px solid #2072ff2a;
+      filter: saturate(1.13) contrast(1.13) brightness(1.04);
+      background: #233142;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1.5rem 10px;
+      color: #6a8dbb;
+      font-size: 1rem;
+      backdrop-filter: blur(7px);
+      background: rgba(22,23,30,0.92);
+      letter-spacing: 0.07em;
+      border-top: 1.5px solid #1e2835;
+    }
+
+    footer a {
+      color: var(--text-accent);
+      text-decoration: none;
+    }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 900px) {
+      .about-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+      }
+      .logo {
+        font-size: 1.6rem;
+      }
+      nav ul {
+        justify-content: center;
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0.8rem 5vw; }
+      .logo { font-size: 1.3rem; }
+      nav ul { gap: 1rem; }
+      .about-text h2 { font-size: 1.5rem; }
+      .about-text { font-size: 1rem; }
+      footer { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Saints</div>
+    <ul>
+      <li><a href="saints.html">Home</a></li>
+      <li><a href="browse.html">Browse</a></li>
+      <li><a href="aboutus.html" class="active">About Us</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="about-section">
+      <div class="about-text">
+        <h2>About Saints</h2>
+        <p>
+          <b>Saints</b> is a modern clothing brand dedicated to redefining men's style for the new generation. Our collection features premium trousers, bold clothing, and accessories designed for quality, confidence, and masculinity.
+        </p>
+        <p>
+          Each piece is crafted with attention to detail, blending timeless looks with contemporary edge. Whether you’re dressing up, dressing down, or expressing your unique style, Saints has something for you.
+        </p>
+        <p>
+          Thank you for choosing Saints. Dress sharp. Stand tall. Embrace the vibe.
+        </p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; <span id="year"></span> Saints. All rights reserved.
+    <br>
+    Website designed by Ariote John
+    <a
+      href="https://wa.me/2349066577868?text=Hi%2C%20I'm%20interested%20in%20Saints.%20Is%20it%20available%3F"
+      target="_blank"
+      rel="noopener noreferrer"
+    >WhatsApp number</a>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

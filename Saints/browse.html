@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saints - Shop</title>
+  <style>
+    :root {
+      --bg-main: #16171a;
+      --bg-glass: rgba(25, 27, 30, 0.86);
+      --text-main: #f3f5fa;
+      --text-accent: #2072ff;
+      --accent: #2072ff;
+      --card-bg: rgba(28, 31, 38, 0.97);
+      --border: #232834;
+      --shadow: 0 4px 32px #101216c0;
+      --radius: 24px;
+      --radius-img: 22px;
+      --transition: .18s cubic-bezier(.77,.2,.05,1.01);
+      --highlight: #0d8db6;
+      --card-glow: 0 0 0 2px #2072ff33, 0 8px 28px #2072ff1a;
+      --footer-bg: #101216;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: linear-gradient(120deg, #17192b 0%, #16171a 100%);
+      color: var(--text-main);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* ✅ allow wrapping */
+      gap: 10px;
+      padding: 1.2rem 8vw;
+      background: var(--bg-glass);
+      box-shadow: 0 2px 24px #12214422;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1.5px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: .17em;
+      color: var(--text-accent);
+      text-shadow: 0 2px 18px #2072ff40;
+      text-transform: uppercase;
+      filter: brightness(1.18);
+      flex: 1;
+    }
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap; /* ✅ responsive nav links */
+    }
+    nav a {
+      text-decoration: none;
+      color: #e4e9f7;
+      font-size: 1rem;
+      font-weight: 700;
+      padding-bottom: 2px;
+      border-bottom: 2.5px solid transparent;
+      transition: color var(--transition), border var(--transition);
+    }
+    nav a.active, nav a:hover {
+      color: var(--text-accent);
+      border-bottom: 2.5px solid var(--accent);
+    }
+
+    /* SHOP SECTION */
+    .shop-section {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 60px 20px 80px 20px;
+      width: 100%;
+    }
+    .shop-section h2 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin-bottom: 32px;
+      background: linear-gradient(90deg, #2072ff 5%, var(--highlight) 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 3px 18px #2072ff22;
+    }
+    .shop-section h2::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 4px;
+      margin-top: 6px;
+      background: linear-gradient(90deg, #2072ff 30%, var(--highlight) 100%);
+      border-radius: 3px;
+      opacity: .7;
+    }
+
+    /* GRID */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      width: 100%;
+    }
+    .product-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1.5px solid #22344d;
+      display: flex;
+      flex-direction: column;
+      transition: .2s;
+    }
+    .product-card:hover {
+      box-shadow: var(--card-glow);
+      border-color: #2072ffcc;
+      transform: translateY(-6px) scale(1.025);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: var(--radius-img);
+      border-top-right-radius: var(--radius-img);
+      border-bottom: 2px solid #2072ff26;
+    }
+
+    /* PRODUCT INFO */
+    .prod-info {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .prod-info h3 {
+      font-size: 1.1rem;
+      margin: 0 0 10px;
+      font-weight: 800;
+    }
+    .prod-price {
+      font-size: 1.05rem;
+      color: var(--text-accent);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .order-btn {
+      margin-top: auto;
+      padding: 12px;
+      background: linear-gradient(101deg, #2072ff 10%, var(--highlight) 90%);
+      color: #fff;
+      border-radius: 32px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: .15s;
+    }
+    .order-btn:hover {
+      background: linear-gradient(101deg, #1a5bc6 10%, var(--highlight) 90%);
+      transform: scale(1.04);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: auto;
+      background: var(--footer-bg);
+      color: #b0bad1;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.95rem;
+      border-top: 1.5px solid #222a36;
+    }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 900px) {
+      nav ul { justify-content: center; }
+      .shop-section h2 { font-size: 1.7rem; text-align: center; }
+      .products-grid { gap: 18px; }
+      .product-card img { height: 160px; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0.8rem 5vw; }
+      .logo { font-size: 1.3rem; }
+      nav ul { gap: 1rem; font-size: 0.9rem; }
+      .shop-section { padding: 20px 10px; }
+      .shop-section h2 { font-size: 1.4rem; }
+      .shop-section h2::after { width: 28px; height: 3px; margin: 0 auto; }
+      .product-card img { height: 120px; }
+      .prod-info { padding: 12px; }
+      .prod-info h3 { font-size: 1rem; }
+      .prod-price { font-size: 0.95rem; }
+      .order-btn { font-size: 0.9rem; padding: 10px; }
+      footer { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Saints</div>
+    <ul>
+      <li><a href="saints.html">Home</a></li>
+      <li><a href="browse.html" class="active">Browse</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="shop-section">
+      <h2>Browse Our Collection</h2>
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+  </main>
+  <footer>
+    &copy; <span id="year"></span> Saints. All rights reserved.
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const products = [
+      { name: "Trouser", price: "₦27,000", img: "Pictures/saintsJeans.jpg" },
+      { name: "Camo Tee", price: "₦30,000", img: "Pictures/camo tee.jpg" },
+      { name: "Saints piece", price: "₦28,00", img: "Pictures/Collection.jpg" },
+      { name: "Trouser", price: "₦28,000", img: "Pictures/outfit 4.jpg" },
+      { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+      { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+       { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+        { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+         { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+          { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+           { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+            { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+            { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+            { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+            { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+            { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+            { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+            { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+            { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+            { name: "Coming soon....", price: "", img: "Pictures/saintslogo.jpg" },
+    ];
+
+    const grid = document.getElementById('productsGrid');
+    products.forEach(prod => {
+      const div = document.createElement('div');
+      div.className = 'product-card';
+      div.innerHTML = `
+        <img src="${prod.img}" alt="${prod.name}" loading="lazy">
+        <div class="prod-info">
+          <h3>${prod.name}</h3>
+          <div class="prod-price">${prod.price}</div>
+          <a class="order-btn"
+            href="https://wa.me/2349125478088?text=Hi%2C%20I'm%20interested%20in%20the%20${encodeURIComponent(prod.name)}%20on%20Saints.%20Is%20it%20available%3F"
+            target="_blank">Order via WhatsApp</a>
+        </div>
+      `;
+      grid.appendChild(div);
+    });
+  </script>
+</body>
+</html>
